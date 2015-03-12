@@ -4,17 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class main {
+public class PuzzleMain {
 
 	public static void main(String[] args) {
 		if (args.length > 0 && args[0].equals("test")) {
 			testAll();
 		} else {
-			// byte [][] startState
-			// ={{1,2,3},{4,5,6},{7,8,0}};//{{8,7,6},{5,4,3},{2,1,0}}; //12
-			// steps
-			// byte[][] goalState
-			// ={{7,0,2},{8,5,3},{6,4,1}};//{{1,2,3},{4,5,6},{7,8,0}};
 			Scanner in = new Scanner(System.in);
 			byte[][] startState = getStateInteractively(3, "start", in);
 			byte[][] goalState = getStateInteractively(3, "goal", in);
