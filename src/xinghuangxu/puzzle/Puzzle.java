@@ -29,7 +29,7 @@ public class Puzzle implements Comparable<Puzzle>, Cloneable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-
+//		Puzzle temp=(Puzzle)obj;
 		if (obj.hashCode() == this.hashCode()) {
 			return true;
 		} else

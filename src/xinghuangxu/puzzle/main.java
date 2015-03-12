@@ -9,16 +9,21 @@ public class main {
 	public static void main(String[] args) {
 //		Integer[] startState = getStateInteractively(3);
 //		Integer[] goalState = getStateInteractively(3);
+		
+		testAll();
+//		test({{1,2,3},{4,5,6},{7,8,0}},{{7,2,4},{5,0,6},{8,3,1}},20);
 //		int[][] startState ={{1,2,3},{4,5,6},{7,8,0}};
 //		int[][] startState ={{7,2,4},{5,0,6},{8,3,1}};
 //		int[][] startState ={{4,2,5},{3,0,1},{6,7,8}}; //not solvable?
 //		int[][] startState ={{8,1,0},{7,5,3},{2,4,6}};
-//		int[][] startState ={{4,1,5},{7,3,6},{0,2,8}}; //12 steps
-//		int[][] startState ={{8,1,0},{7,5,3},{2,4,6}};
+		int [][] startState ={{4,1,5},{7,3,6},{0,2,8}}; //12 steps
+//		int[][] startState ={{8,1,0},{7,5,3},{2,4,6}};  
 //		int[][] startState ={{0,3,6},{4,8,7},{1,5,2}}; //24
 //		int[][] startState ={{8,6,7},{2,0,5},{3,1,4}}; //28
 //		int[][] startState ={{3,1,7},{6,4,2},{5,8,0}}; //24
-		int[][] startState ={{5,8,7},{1,0,2},{6,4,3}}; //20 steps!!!
+//		int[][] startState ={{5,8,7},{1,0,2},{6,4,3}}; //20 steps!!!
+//		int[][] startState ={{8,2,7},{5,1,6},{3,0,4}};
+//		int[][] goalState ={{3,1,6},{8,4,5},{7,2,0}};
 		int[][] goalState ={{1,2,3},{4,5,6},{7,8,0}};
 		Puzzle solution=PuzzleSolver.solve(startState,goalState);
 		Puzzle temp=solution;
@@ -31,6 +36,42 @@ public class main {
 			System.out.println("Step "+i+":");
 			System.out.println(steps.get(i).toString());
 			System.out.println("\n");
+		}
+	}
+
+	private static void testAll() {
+		int[][][] startCollection ={
+				{{1,2,3},{4,5,6},{7,8,0}}, //0
+				{{4,1,5},{7,3,6},{0,2,8}}, //12 steps
+				{{0,3,6},{4,8,7},{1,5,2}}, //24
+				{{8,6,7},{2,0,5},{3,1,4}}, //28
+				{{3,1,7},{6,4,2},{5,8,0}}, //24
+				{{5,8,7},{1,0,2},{6,4,3}} //20 steps!!!
+				
+		};
+		int[][][] goalCollection ={
+				{{1,2,3},{4,5,6},{7,8,0}},
+				{{1,2,3},{4,5,6},{7,8,0}},
+				{{1,2,3},{4,5,6},{7,8,0}},
+				{{1,2,3},{4,5,6},{7,8,0}},
+				{{1,2,3},{4,5,6},{7,8,0}},
+				{{1,2,3},{4,5,6},{7,8,0}}
+		};
+		int[] solution={
+				0,12,24,28,24,20
+		};
+		for(int i=0;i<startCollection.length;i++){
+			testSingle(startCollection[i],goalCollection[i],solution[i]);
+		}
+	}
+
+	private static void testSingle(int[][] startState, int[][] goalState, int sol) {
+		Puzzle solution=PuzzleSolver.solve(startState,goalState);
+		Puzzle temp=solution;
+		List<Puzzle> steps=new ArrayList<Puzzle>();
+		while(temp!=null){
+			steps.add(0,temp);
+			temp=temp.getParent();
 		}
 	}
 

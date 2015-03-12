@@ -55,8 +55,10 @@ public class PuzzleSolver {
 		int h=0;
 		for(int i=0;i<size;i++){
 			for(int j=0;j<size;j++){
-				h+=Math.abs(i-gx[state[i][j]]);
-				h+=Math.abs(j-gy[state[i][j]]);
+				if(state[i][j]!=0){
+					h+=Math.abs(i-gx[state[i][j]]);
+					h+=Math.abs(j-gy[state[i][j]]);
+				}
 			}
 		}
 		return h;
