@@ -1,5 +1,6 @@
 package xinghuangxu.puzzle;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -29,7 +30,9 @@ public class PuzzleSolver {
 		}
 		Puzzle start=new Puzzle(startState,null,blankx,blanky);
 		start.setHeuristic(CalculateHeuristicCost(startState, gx, gy));
+		HashSet<Puzzle> visited=new HashSet<Puzzle>();
 		frontier.add(start);
+		visited.add(start);
 		while(!frontier.isEmpty()){
 			Puzzle temp=frontier.poll();
 			if(temp.H==0){
@@ -37,9 +40,10 @@ public class PuzzleSolver {
 			}else{
 				for(Action a: Action.values()){
 					Puzzle newPuzzle=temp.move(a);
-					if(newPuzzle!=null){
+					if(newPuzzle!=null&&!visited.contains(newPuzzle)){
 						newPuzzle.setHeuristic(CalculateHeuristicCost(newPuzzle.State, gx, gy));
 						frontier.add(newPuzzle);
+						visited.add(newPuzzle);
 					}
 				}
 			}
