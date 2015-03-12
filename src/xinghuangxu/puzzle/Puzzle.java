@@ -1,11 +1,13 @@
 package xinghuangxu.puzzle;
 
+import java.util.Arrays;
+
 public class Puzzle implements Comparable<Puzzle>, Cloneable {
 	public static int Size;
 	private int F;// heuristic function f(n)=g(n)+h(n)
 	private int G;
 	public int H;
-	public int[][] State;
+	public byte[][] State;
 	private Puzzle parent;
 	private int blankx;
 	private int blanky;
@@ -40,7 +42,7 @@ public class Puzzle implements Comparable<Puzzle>, Cloneable {
 		return this.parent;
 	}
 
-	public Puzzle(int[][] state, Puzzle parent, int blankx, int blanky) {
+	public Puzzle(byte[][] state, Puzzle parent, int blankx, int blanky) {
 		this.parent = parent;
 		this.State = state;
 		this.blankx = blankx;
@@ -54,7 +56,7 @@ public class Puzzle implements Comparable<Puzzle>, Cloneable {
 	}
 
 	protected Puzzle clone() {
-		int[][] newState = new int[Puzzle.Size][Puzzle.Size];
+		byte[][] newState = new byte[Puzzle.Size][Puzzle.Size];
 		for (int i = 0; i < Puzzle.Size; i++) {
 			for (int j = 0; j < Puzzle.Size; j++) {
 				newState[i][j] = this.State[i][j];
