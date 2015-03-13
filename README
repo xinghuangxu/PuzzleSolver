@@ -2,4 +2,84 @@ Author: Xinghuang Xu
 Overview:
 This program would solve 8 puzzle problems effectively. It would also check if the input is solvable before solving it.
 
-Build:
+1. Build:
+sh build.sh
+
+2. Run:
+sh run.sh
+
+3. test (This will run all the test cases defined inside the PuzzleMain class:
+sh test.sh
+
+Working Example:
+Start State:
+{ 4, 1, 5 }, { 7, 3, 6 }, { 0, 2, 8 }
+
+Goal State:
+{ 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 }
+
+Solution:
+Step 0:
+4 1 5 
+7 3 6 
+0 2 8 
+
+Step 1:
+4 1 5 
+0 3 6 
+7 2 8 
+
+Step 2:
+0 1 5 
+4 3 6 
+7 2 8 
+
+Step 3:
+1 0 5 
+4 3 6 
+7 2 8 
+
+Step 4:
+1 3 5 
+4 0 6 
+7 2 8 
+
+Step 5:
+1 3 5 
+4 2 6 
+7 0 8 
+
+Step 6:
+1 3 5 
+4 2 6 
+7 8 0 
+
+Step 7:
+1 3 5 
+4 2 0 
+7 8 6 
+
+Step 8:
+1 3 0 
+4 2 5 
+7 8 6 
+
+Step 9:
+1 0 3 
+4 2 5 
+7 8 6 
+
+Step 10:
+1 2 3 
+4 0 5 
+7 8 6 
+
+Step 11:
+1 2 3 
+4 5 0 
+7 8 6 
+
+Step 12:
+1 2 3 
+4 5 6 
+7 8 0 
